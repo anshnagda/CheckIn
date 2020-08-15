@@ -9,6 +9,10 @@ public class User {
 
     public User(String name) {
         this.name = name;
+        this.friends = new ArrayList<>();
+        this.groupMap = new HashMap<>();
+        this.myTasks = new ArrayList<>();
+
     }
 
     public void addFriend(User f, String group) {
