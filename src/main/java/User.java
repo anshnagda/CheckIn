@@ -3,8 +3,8 @@ import java.util.*;
 public class User {
     String name;
     // int age;
-    List<User> friends;
-    Map<String, Set<User>> groupMap;
+    List<String> friends;
+    Map<String, Set<String>> groupMap;
     Map<Integer, Task> myTasks;
 
     Map<String, String> notifications;
@@ -18,21 +18,24 @@ public class User {
 
     }
 
-    public void addFriend(User f, String group) {
+    public void addFriend(String f, Set<String> groups) {
         this.friends.add(f);
-        Set<User> currGroup = groupMap.get(group);
-        currGroup.add(f);
-        groupMap.put(group, currGroup);
+        for (String group: groups) {
+            Set<String> currGroup = groupMap.get(group);
+            currGroup.add(f);
+            groupMap.put(group, currGroup);
+        }
     }
 
     public void addGroup(String group) {
-        groupMap.putIfAbsent(group, new HashSet<User>());
+        groupMap.putIfAbsent(group, new HashSet<String>());
     }
 
-    public void addTask(String taskName, String description, int freqPerWeek, String groupName)
+    public int addTask(String taskName, String description, int freqPerWeek, String groupName)
     {
         Task newTask = new Task(myTasks.size(), taskName, description, freqPerWeek, groupName);
         this.myTasks.put(myTasks.size(), newTask);
+        return myTasks.size() - 1;
     }
 
     public void addNotification(String notificationSender, String notification) {
