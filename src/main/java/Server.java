@@ -14,23 +14,44 @@ public class Server {
         userMap.put(username, newUser);
     }
 
-    public void addFeed(String username, String taskName, String description) {
+    public void addFeed(String username, int taskID) {
         User curUser = userMap.get(username);
-        for (Task t: curUser.myTasks) {
-            if (t.taskName.equals(taskName) && t.description.equals(description)) {
-                userFeeds.add(new Feed(curUser, t));
-            }
-        }
+        Task t = curUser.myTasks.get(taskID);
+
+        userFeeds.add(new Feed(username, t));
     }
 
     public void createTask(String group, String taskName, String description, int freq, String username) {
         User curUser = userMap.get(username);
-        Task curTask = new Task(group,taskName,description,freq);
-        curUser.addTask(curTask);
+        curUser.addTask(taskName, description, freq, group);
     }
 
-    public List<Feed> populateFeed() {
+    public List<Feed> populateFeed(String username) {
+        User curUser = userMap.get(username);
+        List<Feed> ret = new ArrayList<>();
 
+        for(Feed feed : userFeeds) {
+            User feed_author = userMap.get(feed.userName);
+            String groupName = feed.currentTask.groupName;
+            if (feed_author.groupMap.get(groupName).contains(curUser)) {
+                ret.add(feed);
+            }
+        }
+
+        return ret;
+    }
+
+    public Map<String, Integer> friendScores(String username) {
+        Map<String, Integer> ret = new HashMap<>();
+        for (User friend : userMap.get(username).friends) {
+            ret.put(friend.name, 100);
+        }
+
+        return ret;
+    }
+
+    public Map<String, String> newNotifications(String username) {
+        return userMap.get(username).getNewNotifications();
     }
 
     // constructors

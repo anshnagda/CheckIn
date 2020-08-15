@@ -5,13 +5,16 @@ public class User {
     // int age;
     List<User> friends;
     Map<String, Set<User>> groupMap;
-    List<Task> myTasks;
+    Map<Integer, Task> myTasks;
+
+    Map<String, String> notifications;
+    Map<String, String> newNotifications;
 
     public User(String name) {
         this.name = name;
         this.friends = new ArrayList<>();
         this.groupMap = new HashMap<>();
-        this.myTasks = new ArrayList<>();
+        this.myTasks = new HashMap<>();
 
     }
 
@@ -26,7 +29,24 @@ public class User {
         groupMap.putIfAbsent(group, new HashSet<User>());
     }
 
-    public void addTask(Task t) {
-        this.myTasks.add(t);
+    public void addTask(String taskName, String description, int freqPerWeek, String groupName)
+    {
+        Task newTask = new Task(myTasks.size(), taskName, description, freqPerWeek, groupName);
+        this.myTasks.put(myTasks.size(), newTask);
+    }
+
+    public void addNotification(String notificationSender, String notification) {
+        notifications.put(notificationSender, notification);
+        newNotifications.put(notificationSender, notification);
+    }
+
+    public Map<String, String> getNewNotifications() {
+        Map<String, String> ret = newNotifications;
+        newNotifications = new HashMap<>();
+        return ret;
+    }
+
+    public Map<String, String> getAllNotifications() {
+        return notifications;
     }
 }
