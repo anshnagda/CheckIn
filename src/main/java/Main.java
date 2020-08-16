@@ -18,7 +18,7 @@ public class Main {
         get("/populateFeed", (req, res) -> populateFeed(req, res) );
         post("/addTask", (req, res) -> addTask(req, res));
         post("/logTask", (req, res) -> logTask(req, res));
-
+        post("notify", (req, res) -> notify(req, res));
     }
 
     public static String populateFeed(Request req, Response res) {
@@ -56,6 +56,14 @@ public class Main {
         int taskID = Integer.parseInt(req.queryParams("taskID"));
 
         serverObject.addFeed(user, taskID);
+        return "";
+    }
+
+    public static String notify(Request req, Response res) {
+        String sender = req.queryParams("userName");
+        String receiver = req.queryParams("friendName");
+        String notification = req.queryParams("notificationText");
+        serverObject.addNotification(sender, receiver, notification);
         return "";
     }
 
