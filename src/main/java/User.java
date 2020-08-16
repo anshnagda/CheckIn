@@ -1,4 +1,5 @@
 import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.*;
 
 public class User {
@@ -29,27 +30,36 @@ public class User {
             groupMap.put(group, currGroup);
         }
     }
-    /*
+
     public int computeScore() {
         int totalScore = 0;
-        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime one_week_before = LocalDateTime.now().minus(Period.ofWeeks(1));
         Map<Feed, LocalDateTime> filteredMap = new HashMap<>();
         for (Feed feed : myFeeds.keySet()) {
-            LocalDateTime difference = now.min
+            if (one_week_before.isBefore(myFeeds.get(feed))) {
+                filteredMap.put(feed, myFeeds.get(feed));
+            }
         }
 
+        myFeeds = filteredMap;
 
         for (int taskNum : myTasks.keySet()) {
             Task task = myTasks.get(taskNum);
-            int curScore = 0;
+            double curScore = 0.0;
 
+            for (Feed feed : myFeeds.keySet()) {
+                if (feed.currentTask.taskID == taskNum) {
+                    curScore += 1.0;
+                }
+            }
 
-
-            totalScore += curScore;
+            double excessScore = Math.max(curScore - task.freqPerWeek, 0);
+            curScore = Math.min(curScore, task.freqPerWeek);
+            totalScore += (curScore + excessScore / 2.0) / task.freqPerWeek * 100.0;
         }
 
         return totalScore / myTasks.size();
-    }*/
+    }
 
     public void addGroup(String group) {
         groupMap.putIfAbsent(group, new HashSet<String>());
@@ -62,6 +72,9 @@ public class User {
         return newTask;
     }
 
+    public void addFeed(Feed feed, LocalDateTime time) {
+        myFeeds.put(feed, time);
+    }
     public void addNotification(String notificationSender, String notification) {
         notifications.put(notificationSender, notification);
         newNotifications.put(notificationSender, notification);

@@ -26,7 +26,9 @@ public class Server {
     public void addFeed(String username, int taskID, LocalDateTime myDateObj) {
         User curUser = userMap.get(username);
         Task t = curUser.myTasks.get(taskID);
-        userFeeds.add(new Feed(username, t, myDateObj));
+        Feed feed = new Feed(username, t, myDateObj);
+        curUser.addFeed(feed, myDateObj);
+        userFeeds.add(feed);
     }
 
     public Task createTask(String group, String taskName, String description, int freq, String username) {
@@ -41,7 +43,7 @@ public class Server {
         for(Feed feed : userFeeds) {
             User feed_author = userMap.get(feed.userName);
             String groupName = feed.currentTask.groupName;
-            if (feed_author.groupMap.get(groupName).contains(username)) {
+            if (feed_author.groupMap.get(groupName).contains(username) || feed_author.name.equals(username)) {
                 ret.add(feed);
             }
         }
@@ -56,7 +58,7 @@ public class Server {
     public Map<String, Integer> friendScores(String username) {
         Map<String, Integer> ret = new HashMap<>();
         for (String friend : userMap.get(username).friends) {
-            ret.put(friend, 100);
+            ret.put(friend, userMap.get(friend).computeScore());
         }
         return ret;
     }

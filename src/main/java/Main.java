@@ -25,13 +25,14 @@ public class Main {
         String user = req.queryParams("userName");
         List<Feed> userFeed = serverObject.populateFeed(user);
         Map<Integer, Task> currUserTask = serverObject.userMap.get(user).myTasks;
+        Collection<Task> currUserTaskList = currUserTask.values();
         Map<String, Integer> friendAndScores = serverObject.friendScores(user);
         Map<String,String> notifications = serverObject.newNotifications(user);
         Map<String, Set<String>> friendGroups = serverObject.userGroups(user);
 
         Map<String, Object> ret = new HashMap<>();
         ret.put("timeline", userFeed);
-        ret.put("tasks", currUserTask);
+        ret.put("tasks", currUserTaskList);
         ret.put("friendScore", friendAndScores);
         ret.put("notification", notifications);
         ret.put("groups", friendGroups);
