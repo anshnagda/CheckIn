@@ -20,6 +20,9 @@ public class User {
         this.groupMap = new HashMap<>();
         this.myTasks = new HashMap<>();
         this.myFeeds = new HashMap<>();
+
+        this.notifications = new HashMap<>();
+        this.newNotifications = new HashMap<>();
     }
 
     public void addFriend(String f, Set<String> groups) {
