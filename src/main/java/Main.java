@@ -61,29 +61,57 @@ public class Main {
 
     public static void loadTestingData() {
         Set<String> anshGroups = new HashSet<>();
-        anshGroups.add("badminton");
+        anshGroups.add("Badminton");
         anshGroups.add("Computer Science");
         Set<String> rishGroups = new HashSet<>();
         rishGroups.add("Gym");
         rishGroups.add("Computer Science");
         Set<String> xiaoGroups = new HashSet<>();
-        xiaoGroups.add("harem");
+        xiaoGroups.add("Harem");
         xiaoGroups.add("UW");
         Set<String> wayneGroups = new HashSet<>();
-        wayneGroups.add("gym");
-        wayneGroups.add("work");
-        wayneGroups.add("meal prep");
+        wayneGroups.add("Gym");
+        wayneGroups.add("Work");
+        wayneGroups.add("Meal prep");
+
         serverObject.createUser("ansh", anshGroups);
         serverObject.createUser("rish", rishGroups);
         serverObject.createUser("xiao", xiaoGroups);
         serverObject.createUser("wayne", wayneGroups);
-        Task task1 = serverObject.createTask("Computer Science", "Study", "CSE331", 3, "ansh");
-        Task task2 = serverObject.createTask("Computer Science", "Study", "Research", 6, "ansh");
-        Set<String> anshRishGroups = new HashSet<>();
-        anshRishGroups.add("Computer Science");
-        serverObject.addFriend("ansh","rish", anshRishGroups);
-        serverObject.addFeed("ansh", task1.taskID);
-        serverObject.addFeed("ansh", task2.taskID);
+        serverObject.createTask("Computer Science", "Study", "CSE331", 3, "ansh");
+        serverObject.createTask("Computer Science", "Study", "Research", 6, "ansh");
+        Set<String> group = new HashSet<>();
+        group.add("Computer Science");
+        serverObject.addFriend("ansh","rish", group);
+        serverObject.addFriend("rish","ansh", group);
+
+        group = new HashSet<>();
+        group.add("Badminton");
+        serverObject.addFriend("ansh","xiao", group);
+
+        group = new HashSet<>();
+        group.add("Harem");
+        group.add("UW");
+        serverObject.addFriend("xiao","ansh", group);
+        serverObject.addFriend("xiao","rish", group);
+        serverObject.addFriend("xiao","wayne", group);
+
+        group = new HashSet<>();
+        group.add("Gym");
+        group.add("Work");
+        group.add("Meal prep");
+        serverObject.addFriend("wayne","xiao", group);
+
+        group = new HashSet<>();
+        group.add("Gym");
+        group.add("Work");
+        serverObject.addFriend("wayne","ansh", group);
+        serverObject.addFriend("wayne","rish", group);
+
+        LocalDateTime now = LocalDateTime.now();
+
+        serverObject.addFeed("ansh", 0);
+        serverObject.addFeed("ansh", 1);
 
     }
 //    LOAD GET request. Body of request: “username”

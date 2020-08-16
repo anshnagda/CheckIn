@@ -65,11 +65,11 @@ public class User {
         groupMap.putIfAbsent(group, new HashSet<String>());
     }
 
-    public Task addTask(String taskName, String description, int freqPerWeek, String groupName)
+    public Collection<Task> addTask(String taskName, String description, int freqPerWeek, String groupName)
     {
         Task newTask = new Task(myTasks.size(), taskName, description, freqPerWeek, groupName);
         this.myTasks.put(myTasks.size(), newTask);
-        return newTask;
+        return myTasks.values();
     }
 
     public void addFeed(Feed feed, LocalDateTime time) {

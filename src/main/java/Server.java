@@ -31,7 +31,7 @@ public class Server {
         userFeeds.add(feed);
     }
 
-    public Task createTask(String group, String taskName, String description, int freq, String username) {
+    public Collection<Task> createTask(String group, String taskName, String description, int freq, String username) {
         User curUser = userMap.get(username);
         return curUser.addTask(taskName, description, freq, group);
     }
