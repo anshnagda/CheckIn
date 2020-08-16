@@ -67,8 +67,21 @@ public class Server {
         return userMap.get(username).getNewNotifications();
     }
 
-    public void addNotification(String sender, String receiver, String description) {
-
+    /**
+     * add notification to user
+     * @param sender userName of the sender
+     * @param receiver userName of the receiver
+     * @param description description of the notification
+     * @return returns true if notification is added in the receivers list.
+     *       returns false if either sender or receiver username is invalid or adding notification failed.
+     */
+    public boolean addNotification(String sender, String receiver, String description) {
+        if (userMap.containsKey(sender)  && userMap.containsKey(sender)) {
+            User receiveUser = userMap.get(receiver);
+            receiveUser.addNotification(sender, description);
+            return true;
+        }
+        return false;
     }
 
     // constructors

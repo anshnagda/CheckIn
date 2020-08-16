@@ -77,6 +77,7 @@ public class User {
     public void addFeed(Feed feed, LocalDateTime time) {
         myFeeds.put(feed, time);
     }
+
     public void addNotification(String notificationSender, String notification) {
         notifications.put(notificationSender, notification);
         newNotifications.put(notificationSender, notification);
