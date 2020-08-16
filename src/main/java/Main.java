@@ -96,6 +96,7 @@ public class Main {
         group = new HashSet<>();
         group.add("Badminton");
         serverObject.addFriend("ansh","xiao", group);
+        serverObject.addFriend("ansh","wayne", group);
 
         group = new HashSet<>();
         group.add("Harem");

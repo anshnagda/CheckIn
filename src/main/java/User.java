@@ -63,7 +63,7 @@ public class User {
         if (myTasks.size() == 0) {
             return 50;
         }
-        return totalScore / myTasks.size();
+        return Math.min(100, totalScore / myTasks.size());
     }
 
     public void addGroup(String group) {
