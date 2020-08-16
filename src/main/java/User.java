@@ -57,7 +57,9 @@ public class User {
             curScore = Math.min(curScore, task.freqPerWeek);
             totalScore += (curScore + excessScore / 2.0) / task.freqPerWeek * 100.0;
         }
-
+        if (myTasks.size() == 0) {
+            return 50;
+        }
         return totalScore / myTasks.size();
     }
 
