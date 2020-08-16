@@ -1,0 +1,35 @@
+.Task {
+    display: flex;
+    justify-content: space-between;
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    transition: 0.5s;
+    border-radius: 6px;
+}
+
+.Task:hover {
+    background: #e1e1e1;
+}
+
+.friend-share-text {
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin: 1%;
+}
+
+
+.shared-friend {
+    margin: 1%;
+}
+
+.iconContainer {
+    display: flex;
+    justify-content: center;
+    padding: 1%;
+}
+
+  
+  

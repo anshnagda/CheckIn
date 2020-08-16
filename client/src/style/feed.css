@@ -1,0 +1,32 @@
+
+img {
+    margin: 3%;
+    display: inline-block;
+    
+}
+
+.feed-line {
+    display: inline-block;
+}
+
+.Feed {
+    transition: 0.5s;
+    padding: 1%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    vertical-align: middle;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .imgDiv {
+    display: flex;
+    justify-content: flex-end;
+} */
+
+
+.Feed:hover {
+    background: #e1e1e1;
+    border-radius: 6px;
+}

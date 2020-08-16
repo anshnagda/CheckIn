@@ -1,0 +1,258 @@
+@import url("https://www.w3schools.com/w3css/4/w3.css");
+
+/* .progbar {
+  @include '../../public/bootstrap.min.css';
+} */
+
+.login {
+  display: flex;
+  justify-content: center;
+  padding-left: 50%;
+  padding-top: 10%;
+  padding-bottom: 40%;
+  padding-right: 10%;
+  margin-top: 1%;
+  align-items: center;
+}
+.loginCheckIn {
+  display: flex;
+  align-items: center;
+  padding-bottom: 7%;
+  padding-right: 25%;
+  font-size: xx-large;
+}
+.loginForm {
+  font-size: x-large;
+  padding-left: 15%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0 30px;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif; */
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f0edf1;
+  color: #333333;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+/* navbar */
+.navbar {
+  text-align: center;
+}
+.nav-title {
+  font-family: 'Montserrat', sans-serif !important;
+  letter-spacing: 5px;
+  font-weight: 600;
+  font-size: 35px;
+  color: #505050;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.nav-subtitle {
+  font-family: 'Open Sans', sans-serif !important;
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 22px;
+  color: #504848;
+  margin-bottom: 5vh;
+  text-transform: capitalize;
+}
+
+/* page content */
+.section-name {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 35px;
+  text-decoration: underline #333333;
+}
+
+/* the section containing the columns */
+.mainContent {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+/* each column */
+.col {
+  padding: 8px 15px;
+  margin: 20px;
+  flex-grow: 1;
+  background-color: #f3f3f3;
+  box-shadow: #504848;
+  max-height: 70vh;
+  overflow: auto;
+}
+
+/* Timeline / Feed column */
+.col-timeline {
+  margin-left: 30px;
+  flex-basis: 300px;
+}
+.feed-line {
+  line-height: 135%;
+  margin-bottom: 20px;
+}
+
+/* Task column */
+.col-task {
+  flex-basis: 300px;
+}
+.task-name {
+  margin-bottom: 12px;
+}
+
+
+/* Friend column */
+.col-friends {
+  flex-basis: 200px;
+}
+.Friend {
+  margin-bottom: 8px;
+}
+.friend-name {
+  margin-bottom: 6px;
+}
+.friend-name a {
+  font-weight: 600;
+}
+.f-status {
+  margin-bottom: 6px;
+}
+.check-in-map {
+  font-size: 13px;
+  border-width: 1px;
+  padding: 6px 12px;
+  border-style: solid black;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+.check-in-map:hover {
+  background-color: rgb(117,42,58);
+  color: white;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+/* styling the modal form */
+.inline-button-div {
+  margin-top: 10px;
+  float: right;
+}
+.modal {
+  padding: 20px;
+
+}
+.close {
+  cursor: pointer;
+}
+button {
+  display: inline-block;
+  padding: 6px 15px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+button:hover,
+button:focus {
+  background-color: gray;
+  color: white;
+  transition: 0.3s;
+}
+
+form {
+  padding: 30px;
+}
+.modal-head {
+  font-weight: 400;
+  font-size: 22px;
+  text-transform: uppercase;
+  color: #383838;
+  letter-spacing: 2px;
+}
+.modal-flex {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+label {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  flex-grow: 1;
+  margin-bottom: 30px;
+}
+.intake {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+.desc-input {
+  width: 100%;
+  height: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+select {
+  padding: 4px 6px;
+  border-radius: 0;
+  border-style: 2px black solid;
+}
+input {
+  padding: 4px 6px;
+}
+.submit {
+  box-sizing: border-box;
+  padding: 10px 20px;
+  color: black;
+  font-size: 16px;
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #333333;
+}
+.submit:hover {
+  box-sizing: border-box;
+  background-color: black;
+  color: white;
+  transition: 0.2s;
+}
+.btn-complete-task {
+  font-size: 13px;
+  border-width: 1px;
+  padding: 10px 25px;
+  border-style: solid black;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+.btn-complete-task:hover {
+  background-color: rgb(117,42,58);
+  color: white;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.vr {
+  width:1px;
+  background-color:#000;
+  position:absolute;
+  top:10%;
+  bottom:10%;
+  left:67%;
+}
+
+

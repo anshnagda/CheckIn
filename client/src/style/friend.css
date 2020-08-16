@@ -1,0 +1,14 @@
+/* @import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'); */
+
+.ProfilePic {
+    border-radius: 50%;
+}
+
+.Friend {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.friend-right {
+    padding: 5%;
+}
