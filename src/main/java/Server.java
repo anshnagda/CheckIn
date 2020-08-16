@@ -1,3 +1,4 @@
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class Server {
@@ -19,12 +20,16 @@ public class Server {
     }
 
     public void addFeed(String username, int taskID) {
-        User curUser = userMap.get(username);
-        Task t = curUser.myTasks.get(taskID);
-        userFeeds.add(new Feed(username, t));
+        addFeed(username, taskID, LocalDateTime.now());
     }
 
-    public int createTask(String group, String taskName, String description, int freq, String username) {
+    public void addFeed(String username, int taskID, LocalDateTime myDateObj) {
+        User curUser = userMap.get(username);
+        Task t = curUser.myTasks.get(taskID);
+        userFeeds.add(new Feed(username, t, myDateObj));
+    }
+
+    public Task createTask(String group, String taskName, String description, int freq, String username) {
         User curUser = userMap.get(username);
         return curUser.addTask(taskName, description, freq, group);
     }

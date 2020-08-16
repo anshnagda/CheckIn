@@ -7,10 +7,9 @@ public class Feed {
     Task currentTask;
     String dateAndTime;
 
-    public Feed(String userName, Task task) {
+    public Feed(String userName, Task task, LocalDateTime myDateObj) {
         this.userName = userName;
         this.currentTask = task;
-        LocalDateTime myDateObj = LocalDateTime.now();
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         this.dateAndTime = myDateObj.format(myFormatObj);
     }
